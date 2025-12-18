@@ -11,7 +11,7 @@ A lightweight and extensible implementation of the **Mediator pattern** for .NET
 - Pipeline with interceptors
 - Minimal allocations
 - Easy integration with Dependency Injection
-- .NET Standart 2.1
+- .NET Standard 2.1
 
 ---
 
@@ -34,7 +34,7 @@ Implement a handler
 ```cs
 public class CreateUserHandler : ICommandHandler<CreateUserCommand, Guid>
 {
-    public ValueTask<TEntity> HandleAsync(CreateUserCommand command, CancellationToken ct)
+    public ValueTask<Guid> HandleAsync(CreateUserCommand command, CancellationToken ct)
     {
         Console.WriteLine("CreateUserHandler: user created");
         return ValueTask.FromResult(Guid.NewGuid());
@@ -60,7 +60,7 @@ public class UsersController(ICommandSender commandSender) : ApiControllerBase
     [HttpPost]
     public async Task<Guid> Post([FromBody] CreateUserCommand command)
     {
-        await commandSender.SendAsync(command);
+        return await commandSender.SendAsync(command);
     }
 }
 ```
@@ -72,14 +72,14 @@ Interceptors allow you to wrap handler execution with cross-cutting concerns suc
 Execution order:
 ```
 GlobalInterceptor 1
-GlobalInterceptor 2
-CommandInterceptor 1
-CommandInterceptor 2
-Handler
-GlobalInterceptor 2
+  GlobalInterceptor 2
+    CommandInterceptor 1
+      CommandInterceptor 2
+        Handler
+      CommandInterceptor 2
+    CommandInterceptor 1
+  GlobalInterceptor 2
 GlobalInterceptor 1
-CommandInterceptor 2
-CommandInterceptor 1
 ```
 
 Example:
@@ -193,7 +193,7 @@ builder.Services.AddCommandBridge(cfg =>
 });
 ```
 
-## Registars
+## Registrars
 
 # Scan assemblies
 
@@ -258,7 +258,7 @@ You can add interceptors via attribute to Command or Handler
 [UseInterceptor(typeof(CommandInterceptor2))]
 public class CreateUserHandler : ICommandHandler<CreateUserCommand, Guid>
 {
-    public ValueTask<TEntity> HandleAsync(CreateUserCommand command, CancellationToken ct)
+    public ValueTask<Guid> HandleAsync(CreateUserCommand command, CancellationToken ct)
     {
         Console.WriteLine("CreateUserHandler: user created");
         return ValueTask.FromResult(Guid.NewGuid());
@@ -275,7 +275,7 @@ By attribute:
 [Lifetime(ServiceLifetime.Singleton)]
 public class CreateUserHandler : ICommandHandler<CreateUserCommand, Guid>
 {
-    public ValueTask<TEntity> HandleAsync(CreateUserCommand command, CancellationToken ct)
+    public ValueTask<Guid> HandleAsync(CreateUserCommand command, CancellationToken ct)
     {
         Console.WriteLine("CreateUserHandler: user created");
         return ValueTask.FromResult(Guid.NewGuid());
@@ -468,3 +468,12 @@ Results
 | MediatR       | 550.5 ns | 8.69 ns |  7.25 ns |  1.42 |    0.02 |    1568 B |        3.02 |
 ```
 
+## Why CommandBridge?
+
+CommandBridge is designed as a high-performance alternative to traditional Mediator implementations,
+focusing on:
+
+- Minimal runtime overhead
+- Explicit command registration
+- Predictable interceptor execution order
+- Zero reflection during command execution
