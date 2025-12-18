@@ -17,7 +17,7 @@ namespace CommandBridge.Tests.Performance.Benchmarks
         public bool IsAsync;
 
         //[Params(0, 1, 2, 3, 4, 5)]
-        [Params(0, 1, 5)]
+        [Params(0, 1, 3, 5)]
         //[Params(5)]
         public int InterceptorsCount;
 

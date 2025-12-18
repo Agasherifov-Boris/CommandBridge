@@ -32,9 +32,9 @@ namespace CommandBridge.Extensions
             return FromAssemblies(builder, options, types.Select(t => t.Assembly).Distinct().ToArray());
         }
 
-        public static CommandBridgeConfigurationBuilder FromAssemblyOf<T>(this CommandBridgeConfigurationBuilder builder) 
+        public static CommandBridgeConfigurationBuilder FromAssemblyOf<T>(this CommandBridgeConfigurationBuilder builder, bool scanInterceptors = true) 
         { 
-            return FromAssemblyOf<T>(builder, ScanAssemblyOptions.Default);
+            return FromAssemblyOf<T>(builder, new ScanAssemblyOptions() { Interceptors = scanInterceptors});
         }
 
         public static CommandBridgeConfigurationBuilder FromAssemblyOf<T>(this CommandBridgeConfigurationBuilder builder, ScanAssemblyOptions options) 

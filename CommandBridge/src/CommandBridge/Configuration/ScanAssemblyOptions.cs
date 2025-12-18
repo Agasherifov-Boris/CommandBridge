@@ -10,7 +10,7 @@ namespace CommandBridge.Configuration
         public ScanAssemblyFilter Filter { get; set; } = (c, h) => true;
 
         /// <summary>
-        /// Find interceptors for each command in the assembly, by default false
+        /// Find interceptors for each command in the assembly, by default true
         /// </summary>
         public bool Interceptors { get; set; } = true;
 
