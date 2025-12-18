@@ -6,9 +6,8 @@ A lightweight and extensible implementation of the **Mediator pattern** for .NET
 
 ## Features
 
-- Commands and queries separation (CQRS-friendly)
 - Strongly typed handlers
-- Asynchronous execution (`Task` / `ValueTask`)
+- Asynchronous execution
 - Pipeline with interceptors
 - Minimal allocations
 - Easy integration with Dependency Injection
