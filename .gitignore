@@ -1,0 +1,17 @@
+/CommandBridge/src/CommandBridge/obj
+/CommandBridge/src/CommandBridge/bin
+/CommandBridge/tests/CommandAssemblies/CommandBridge.Tests.DemoProjects.Shop/obj
+/CommandBridge/tests/CommandAssemblies/CommandBridge.Tests.DemoProjects.Shop/bin
+/CommandBridge/tests/CommandAssemblies/GenericCommands/obj
+/CommandBridge/tests/CommandAssemblies/GenericCommands/bin
+/CommandBridge/tests/CommandAssemblies/IntCommands/obj
+/CommandBridge/tests/CommandAssemblies/IntCommands/bin
+/CommandBridge/tests/CommandAssemblies/StringCommands/obj
+/CommandBridge/tests/CommandAssemblies/StringCommands/bin
+/CommandBridge/tests/CommandBridge.Tests/obj
+/CommandBridge/tests/CommandBridge.Tests/bin
+/CommandBridge/tests/CommandBridge.Tests.Performance/obj
+/CommandBridge/tests/CommandBridge.Tests.Performance/bin
+/CommandBridge/tests/CommandBridge.Tests.Tools/obj
+/CommandBridge/tests/CommandBridge.Tests.Tools/bin
+/CommandBridge/.vs

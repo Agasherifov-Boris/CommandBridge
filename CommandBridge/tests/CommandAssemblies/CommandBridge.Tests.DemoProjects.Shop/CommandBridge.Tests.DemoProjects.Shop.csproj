@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\CommandBridge\CommandBridge.csproj" />
+    <ProjectReference Include="..\..\CommandBridge.Tests.Tools\CommandBridge.Tests.Tools.csproj" />
+  </ItemGroup>
+
+</Project>
