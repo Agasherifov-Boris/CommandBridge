@@ -1,4 +1,4 @@
-# Mediator for .NET
+# CommandBridge
 
 A lightweight and extensible implementation of the **Mediator pattern** for .NET, designed for clean application architecture, CQRS-style workflows, and high performance.
 
@@ -12,7 +12,7 @@ A lightweight and extensible implementation of the **Mediator pattern** for .NET
 - Pipeline with interceptors
 - Minimal allocations
 - Easy integration with Dependency Injection
-- .NET 8 / .NET 9 support
+- .NET Standart 2.1
 
 ---
 
